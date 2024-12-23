@@ -1,5 +1,5 @@
 {
-  "name": "@devnote-dev/pterojs",
+  "name": "@winterhost/pterojs",
   "version": "2.2.2",
   "description": "A verbose API library for Pterodactyl",
   "author": "Devonte <https://github.com/devnote-dev>",
