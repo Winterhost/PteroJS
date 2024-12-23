@@ -10,7 +10,7 @@
             "cache": true,
             "max": -1
         },
-        "nests": {
+        "eggs": {
             "fetch": false,
             "cache": false,
             "max": 0

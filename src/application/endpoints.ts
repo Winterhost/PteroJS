@@ -35,12 +35,8 @@ export default {
         main: '/locations',
         get: (l: number) => `/locations/${l}`,
     },
-    nests: {
-        main: '/nests',
-        get: (n: number) => `/nests/${n}`,
-        eggs: {
-            main: (n: number) => `/nests/${n}/eggs`,
-            get: (n: number, e: number) => `/nests/${n}/eggs/${e}`,
-        },
+    eggs: {
+        main: '/eggs',
+        get: (e: number) => `/eggs/${e}`,
     },
 };

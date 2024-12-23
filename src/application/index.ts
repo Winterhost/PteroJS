@@ -1,6 +1,4 @@
 import { ApplicationServerManager } from './ApplicationServerManager';
-import { NestManager } from './NestManager';
-import { NodeAllocationManager } from './NodeAllocationManager';
 import { NodeLocationManager } from './NodeLocationManager';
 import { NodeManager } from './NodeManager';
 import { RequestManager } from '../http/RequestManager';
@@ -8,6 +6,8 @@ import { UserManager } from './UserManager';
 import { OptionSpec } from '../common';
 import { ValidationError } from '../structures/Errors';
 import loader from '../util/config';
+import { EggsManager } from './EggsManager';
+import { NodeAllocationManager } from './NodeAllocationManager';
 
 /**
  * The base class for the Pterodactyl application API.
@@ -36,7 +36,7 @@ export class PteroApp {
 
     public allocations: NodeAllocationManager;
     public locations: NodeLocationManager;
-    public nests: NestManager;
+    public eggs: EggsManager;
     public nodes: NodeManager;
     public servers: ApplicationServerManager;
     public users: UserManager;
@@ -60,7 +60,7 @@ export class PteroApp {
 
         this.allocations = new NodeAllocationManager(this);
         this.locations = new NodeLocationManager(this);
-        this.nests = new NestManager(this);
+        this.eggs = new EggsManager(this);
         this.nodes = new NodeManager(this);
         this.servers = new ApplicationServerManager(this);
         this.users = new UserManager(this);

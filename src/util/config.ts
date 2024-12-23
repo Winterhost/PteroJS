@@ -14,7 +14,7 @@ const DEFAULT = {
             cache: true,
             max: -1,
         },
-        nests: {
+        eggs: {
             fetch: false,
             cache: true,
             max: -1,

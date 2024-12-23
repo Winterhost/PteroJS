@@ -93,7 +93,6 @@ export interface NodeLocation {
  * PteroJS currently supports the following config options:
  * * users
  * * nodes
- * * nests
  * * servers
  * * locations
  * * subUsers

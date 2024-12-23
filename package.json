@@ -14,7 +14,7 @@
   "homepage": "https://pteropackages.github.io/PteroJS/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PteroPackages/PteroJS.git"
+    "url": "git+https://github.com/Winterhost/PteroJS.git"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

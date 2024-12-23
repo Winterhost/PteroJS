@@ -6,7 +6,7 @@ import { Egg } from '../common/app';
 import caseConv from '../util/caseConv';
 import endpoints from './endpoints';
 
-export class NestEggsManager extends BaseManager {
+export class EggsManager extends BaseManager {
     public client: PteroApp;
     public cache: Dict<number, Egg>;
 
@@ -17,7 +17,6 @@ export class NestEggsManager extends BaseManager {
 
     /**
      * Allowed include arguments for eggs:
-     * * nest
      * * servers
      * * config
      * * script
@@ -25,7 +24,6 @@ export class NestEggsManager extends BaseManager {
      */
     get INCLUDES() {
         return Object.freeze([
-            'nest',
             'servers',
             'config',
             'script',
@@ -75,24 +73,22 @@ export class NestEggsManager extends BaseManager {
      * @returns The formatted URL to the egg in the admin panel.
      */
     adminURLFor(id: number): string {
-        return `${this.client.domain}/admin/nests/egg/${id}`;
+        return `${this.client.domain}/admin/eggs/${id}`;
     }
 
     /**
      * Fetches an egg from the API by its ID. This will check the cache first unless the force
      * option is specified.
      *
-     * @param nest The ID of the nest.
      * @param id The ID of the egg.
      * @param [options] Additional fetch options.
      * @returns The fetched egg.
      * @example
      * ```
-     * app.nests.eggs.fetch(1, 16).then(console.log).catch(console.error);
+     * app.eggs.fetch(1, 16).then(console.log).catch(console.error);
      * ```
      */
     async fetch(
-        nest: number,
         id: number,
         options?: Include<FetchOptions>,
     ): Promise<Egg>;
@@ -100,31 +96,28 @@ export class NestEggsManager extends BaseManager {
      * Fetches a list of eggs from the API by its ID. This will check the cache first unless the
      * force option is specified.
      *
-     * @param nest The ID of the nest.
      * @param [options] Additional fetch options.
      * @returns The fetched eggs.
      * @example
      * ```
-     * app.nests.eggs.fetch(1)
+     * app.eggs.fetch()
      *  .then(eggs => eggs.forEach(e => console.log(e)))
      *  .catch(console.error);
      * ```
      */
     async fetch(
-        nest: number,
         options?: Include<FetchOptions>,
     ): Promise<Dict<number, Egg>>;
     async fetch(
-        nest: number,
         op1?: number | Include<FetchOptions>,
         op2: Include<FetchOptions> = {},
     ): Promise<any> {
-        let path = endpoints.nests.eggs.main(nest);
+        let path = endpoints.eggs.main;
 
         if (typeof op1 === 'number') {
             if (!op2.force && this.cache.has(op1)) return this.cache.get(op1);
 
-            path = endpoints.nests.eggs.get(nest, op1);
+            path = endpoints.eggs.get(op1);
         } else {
             if (op1) op2 = op1;
         }
