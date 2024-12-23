@@ -4,7 +4,6 @@
 /dist
 
 # General files
-package-lock.json
 /tests/auth.ts
 
 # Test files/directories
