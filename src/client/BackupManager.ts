@@ -202,15 +202,19 @@ export class BackupManager extends BaseManager {
     /**
      * Restores a specified backup to the server.
      * @param id The UUID of the backup.
+     * @param truncate Whether to truncate the server before restoring.
      * @example
      * ```
      * const server = await client.servers.fetch('34740510');
      * await server.backups.restore('904df120').catch(console.error);
      * ```
      */
-    async restore(id: string): Promise<void> {
+    async restore(id: string, truncate: boolean): Promise<void> {
         await this.client.requests.post(
             endpoints.servers.backups.restore(this.serverId, id),
+            {
+                truncate: truncate,
+            },
         );
     }
 
